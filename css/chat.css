@@ -72,6 +72,24 @@
   left: 0;
   right: 0;
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(-50px);
+    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+  50% {
+    transform: translateY(-60px);
+    box-shadow: 0 30px 60px -62px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+  100% {
+    transform: translateY(-50px);
+    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+}
 .chat__write {
   margin: 0 auto;
   bottom: 0px;
@@ -88,8 +106,9 @@
   margin: 0 auto;
   transform: translateY(-50px);
   border-radius: 40px;
-  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  animation: float 3s linear infinite forwards;
 }
 .chat__write:focus ~ .chat__icon {
   opacity: 0;
@@ -107,6 +126,7 @@
   position: absolute;
   right: 10px;
 }
+
 .chat-screen .chat__messages {
   border-top: 1px solid #f7f7f7;
   display: flex;
@@ -169,4 +189,35 @@
 .sent-message .message__bubble {
   border-bottom-right-radius: 0px;
   background-image: linear-gradient(to right, #159957, #0f3443);
+}
+
+/*incoming message animation */
+@keyframes incomingAnimation {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.incoming-message {
+  animation: incomingAnimation 0.5s ease-out forwards;
+}
+
+/*sent message animation */
+@keyframes sentAnimation {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.sent-message {
+  /*forwards값을 유지*/
+  animation: sentAnimation 0.5s ease-out forwards;
 }
